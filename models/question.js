@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({ 
-  title: {
+  question: {
     type: String,
-    required: [true, "Title is required"]
+    required: [true, "Question content is required"]
   },
-  content: {
-    type: String,
-    required: [true, "Content can't be blank"]
-  },
-  response: {
+  answer: {
     type: String,
   }
 });

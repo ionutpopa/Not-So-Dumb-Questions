@@ -1,0 +1,94 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .title {
+      width: min-content;
+      font-weight: 600;
+      font-size: 23px;
+      padding: 20px 0;
+      letter-spacing: 0.2rem;
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: 0.15em solid #f05454; /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+      animation: typing 0.5s steps(15, end),
+        blink-caret 0.3s step-end infinite alternate;
+      animation-fill-mode: forwards;
+      small {
+        margin-left: -3px;
+        letter-spacing: 0.1rem;
+        font-weight: 300;
+      }
+    }
+    .description {
+      height: 50px;
+      width: 90vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1586c7;
+      color: #ffffff;
+      padding: 0 10px;
+      border: 1px solid #e2e2e2;
+      border-radius: 12px;
+      letter-spacing: 0.02rem;
+      margin-bottom: 20px;
+      cursor: default;
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .question-container {
+      border-left: 3px solid #2c2c2c;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      padding: 10px 0;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      .question {
+        display: flex;
+        margin-bottom: 10px;
+        p:nth-child(1) {
+          margin-right: 10px;
+        }
+      }
+      .answer {
+        display: flex;
+        p:nth-child(1) {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #f05454;
+  }
+}

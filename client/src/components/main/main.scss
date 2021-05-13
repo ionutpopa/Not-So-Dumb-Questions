@@ -106,13 +106,6 @@
         p:nth-child(1) {
           margin-right: 10px;
         }
-        .truncate-text-container {
-          display: flex;
-          padding-right: 10px;
-          i {
-            color: #5f5f5f;
-          }
-        }
       }
       .answer {
         display: flex;
@@ -121,6 +114,13 @@
         }
         .add-answer {
           color: #2bb1ff;
+        }
+      }
+      .truncate-text-container {
+        display: flex;
+        padding-right: 10px;
+        i {
+          color: #5f5f5f;
         }
       }
     }
@@ -134,6 +134,11 @@
 @media only screen and (max-width: 718px) {
   .main-page {
     margin: 0 20px;
+  }
+  .add-question {
+    p {
+      display: none;
+    }
   }
 }
 

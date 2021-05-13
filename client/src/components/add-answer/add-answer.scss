@@ -5,24 +5,35 @@
   justify-content: space-between;
   height: 90vh;
   margin: 0 20px;
-  p {
-    margin-top: 100px;
-    font-weight: 600;
-    font-size: 25px;
-    letter-spacing: 0.3em;
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: center;
     background-color: #222831;
     color: #ffffff;
     padding: 10px;
     padding-left: 14px;
+    p:nth-child(1) {
+      font-size: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.3em;
+      font-weight: 600;
+    }
+    p:nth-child(2) {
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
   }
   form {
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     textarea {
-        width: 100%;
+      width: 100%;
       border-radius: 8px;
       outline: none;
       resize: none;
@@ -38,49 +49,83 @@
     textarea[type="text"] {
       font-family: "Roboto";
     }
-    .buttons {
-      button {
-        cursor: pointer;
-        margin-top: 20px;
-        border: none;
-        background-color: #ffffff;
-        border: 2px solid #505050;
-        border-radius: 8px;
-        padding: 5px 15px;
-        font-size: 15px;
-        font-weight: 500;
-        letter-spacing: 1px;
-      }
-      button:nth-child(1) {
-        margin-right: 10px;
-        background-color: #73ff006c;
-        transition: 200ms;
-      }
-      button:nth-child(1):focus {
-        color: #ffffff;
-        background-color: #73ff00;
-        transition: 200ms;
-      }
-      button:nth-child(1):hover {
-        color: #ffffff;
-        background-color: #73ff00;
-        transition: 200ms;
-      }
-      button:nth-child(2) {
-        margin-left: 10px;
-        background-color: #ff00006c;
-        transition: 200ms;
-      }
-      button:nth-child(2):focus {
-        color: #ffffff;
-        background-color: #ff0000;
-        transition: 200ms;
-      }
-      button:nth-child(2):hover {
-        color: #ffffff;
-        background-color: #ff0000;
-        transition: 200ms;
+    .space {
+      justify-content: space-between;
+    }
+    .no-space {
+      justify-content: center;
+    }
+    .answer-container {
+      margin: 0 10px;
+      border: 2px solid #7e7e7e;
+      border-radius: 10px;
+      padding: 10px 20px;
+      p {
+        font-weight: 600;
       }
     }
+    .buttons {
+      display: flex;
+      width: 200px;
+    }
+    button {
+      cursor: pointer;
+      margin-top: 20px;
+      border: none;
+      background-color: #ffffff;
+      border: 2px solid #505050;
+      border-radius: 8px;
+      padding: 5px 15px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .answer {
+      background-color: #73ff006c;
+      transition: 200ms;
+    }
+    .answer:focus {
+      color: #ffffff;
+      background-color: #73ff00;
+      transition: 200ms;
+    }
+    .answer:hover {
+      color: #ffffff;
+      background-color: #73ff00;
+      transition: 200ms;
+    }
+    .cancel {
+      background-color: #ff00006c;
+      transition: 200ms;
+    }
+    .cancel:focus {
+      color: #ffffff;
+      background-color: #ff0000;
+      transition: 200ms;
+    }
+    .cancel:hover {
+      color: #ffffff;
+      background-color: #ff0000;
+      transition: 200ms;
+    }
   }
+  .loading-container {
+    border: 2px solid #7e7e7e;
+    border-radius: 10px;
+    padding: 10px 20px;
+    p {
+      font-weight: 600;
+    }
+  }
+}
+
+.loading-modal {
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vw;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  transform: translate(-50%, -50%);
 }

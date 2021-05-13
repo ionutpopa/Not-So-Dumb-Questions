@@ -6,6 +6,8 @@ import "./main.scss";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
+  const [detect, setDetect] = useState(false);
+  const textAreaRef = useRef();
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -17,7 +19,17 @@ const Main = () => {
       }
     };
     getQuestions();
-  }, []);
+
+    if (detect) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [detect]);
 
   const initialState = { question: "", answer: "" };
   const [question, setQuestion] = useState(initialState);
@@ -53,46 +65,14 @@ const Main = () => {
       input
     );
 
-  let [rowsNr, setRowsNr] = useState(2);
-  const changeRowsNr = () => {
-    textAreaRef.current.rows = 4
-    setRowsNr(4);
-    setTextAreaHeight("100px");
+  const handleClickOutside = (e) => {
+    if (textAreaRef.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click
+    setDetect(false);
   };
-
-  const useOutsideDetector = (ref) => {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      const handleClickOutside = (event) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setRowsNr(2);
-          setTextAreaHeight("70px");
-        }
-      };
-      // Bind the event listener
-      document.addEventListener("click", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("click", handleClickOutside);
-      };
-    }, [ref]);
-  };
-
-  /**
-   * Component that alerts if you click outside of it
-   */
-  const OutsideDetector = (props) => {
-    const wrapperRef = useRef(null);
-    useOutsideDetector(wrapperRef);
-
-    return <div ref={wrapperRef}>{props.children}</div>;
-  };
-
-  const [textAreaHeight, setTextAreaHeight] = useState("70px");
-  const textAreaRef = useRef(null)
-  
 
   return (
     <div className="main-page">
@@ -109,27 +89,28 @@ const Main = () => {
         </div>
         <div className="add-question">
           <p>Create a Question:</p>
-          <OutsideDetector>
-            <form onSubmit={handleSubmit}>
-              <div className="form">
-                <textarea
-                  onClick={changeRowsNr}
-                  ref={textAreaRef}
-                  placeholder="Ask Something!"
-                  name="question"
-                  cols="70"
-                  rows="2"
-                  type="text"
-                  value={question.question}
-                  onChange={handleChange}
-                  className="form-control"
-                />
-              </div>
-              <div className="submit-question">
-                <input type="submit" value="Add" />
-              </div>
-            </form>
-          </OutsideDetector>
+          <form onSubmit={handleSubmit}>
+            <div className="form">
+              <textarea
+                onClick={(e) => setDetect(true)}
+                ref={textAreaRef}
+                placeholder="Ask Something!"
+                name="question"
+                cols="70"
+                style={
+                  detect ? { transition: "300ms" } : { transition: "300ms" }
+                }
+                rows={detect ? 4 : 2}
+                type="text"
+                value={question.question}
+                onChange={handleChange}
+                className="form-control"
+              />
+            </div>
+            <div className="submit-question">
+              <input type="submit" value="Add" />
+            </div>
+          </form>
         </div>
       </div>
       <div className="content">

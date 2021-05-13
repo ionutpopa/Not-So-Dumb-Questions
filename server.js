@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./routes/index");
+require("dotenv").config();
 
 const app = express();
-const PORT = 3001;
-const MONGODB_URI = // Connect your database here;
+const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI; // here you add your mongodb database, example: mongodb+srv://your-username:your-password@your-cluster-name.1111.mongodb.net/your-database-name?retryWrites=true&w=majority;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

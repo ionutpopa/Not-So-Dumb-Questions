@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { get, patch } from "axios";
 
+import "./add-answer.scss";
+
 const AddAnswer = (props) => {
   const initialState = { question: "", answer: "" };
   const [question, setQuestion] = useState(initialState);
@@ -38,23 +40,20 @@ const AddAnswer = (props) => {
     props.history.push("/");
   };
   return (
-    <div>
-      <h1>Edit</h1>
-      <hr />
+    <div className="add-answer-container">
+      <p>answer the question</p>
       <form onSubmit={handleSubmit}>
-        {/* ! Answer */}
-        <div>
-          <label>Answer</label>
-          <textarea
-            name="answer"
-            rows="5"
-            value={question.answer}
-            onChange={handleChange}
-          />
-        </div>
-        {/* ! Answer */}
-        <div>
-          <button type="submit">Update</button>
+        <textarea
+          placeholder="don't be afraid"
+          name="answer"
+          rows="10"
+          cols="60"
+          type="text"
+          value={question.answer}
+          onChange={handleChange}
+        />
+        <div className="buttons">
+          <button type="submit">Answer</button>
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>

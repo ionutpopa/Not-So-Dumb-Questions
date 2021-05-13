@@ -6,3 +6,6 @@ Add your own MONGODB_URI in server.js to work!
 Start server: nodemon server.js
 
 Start client: yarn start
+
+To-Do:
+:bug: When adding a new question fix the bug where the user needs to click twice to send the question

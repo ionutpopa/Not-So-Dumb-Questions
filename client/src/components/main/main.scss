@@ -107,6 +107,7 @@
           margin-right: 10px;
         }
       }
+      width: 100%;
       .answer {
         display: flex;
         p:nth-child(1) {
@@ -120,6 +121,7 @@
         display: flex;
         padding-right: 10px;
         i {
+          margin-left: 40px;
           color: #5f5f5f;
         }
       }

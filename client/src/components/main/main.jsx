@@ -59,9 +59,9 @@ const Main = () => {
   };
 
   const truncate = (input) =>
-    input.length > 60 ? (
+    input.length > 100 ? (
       <div className="truncate-text-container">
-        <p>{input.substring(0, 60)} . . .</p>
+        <p>{input.substring(0, 100)} . . .</p>
         <i>click to see the question</i>
       </div>
     ) : (

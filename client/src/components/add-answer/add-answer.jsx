@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { get, patch } from "axios";
+import { DisappearedLoading } from "react-loadingg";
 
 import "./add-answer.scss";
 
@@ -39,12 +40,22 @@ const AddAnswer = (props) => {
   const handleCancel = () => {
     props.history.push("/");
   };
+
   return (
     <div className="add-answer-container">
-      <p>answer the question</p>
+      <div className="title-container">
+        <p>answer the question: </p>
+        {!question.question ? (
+          <div className="loading-modal">
+            <DisappearedLoading />
+          </div>
+        ) : (
+          <p>{question.question}</p>
+        )}
+      </div>
       <form onSubmit={handleSubmit}>
         <textarea
-          placeholder="don't be afraid"
+          placeholder="help with an answer!"
           name="answer"
           rows="10"
           cols="60"
@@ -52,9 +63,11 @@ const AddAnswer = (props) => {
           value={question.answer}
           onChange={handleChange}
         />
-        <div className="buttons">
-          <button type="submit">Answer</button>
-          <button type="button" onClick={handleCancel}>
+        <div className="buttons space">
+          <button className="answer" type="submit">
+            Answer
+          </button>
+          <button className="cancel" type="button" onClick={handleCancel}>
             Cancel
           </button>
         </div>

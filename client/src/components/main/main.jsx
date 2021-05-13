@@ -2,11 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+//import { LoopCircleLoading } from 'react-loadingg';
+
 import "./main.scss";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
   const [detect, setDetect] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const textAreaRef = useRef();
 
   useEffect(() => {
@@ -56,9 +59,9 @@ const Main = () => {
   };
 
   const truncate = (input) =>
-    input.length > 100 ? (
+    input.length > 60 ? (
       <div className="truncate-text-container">
-        <p>{input.substring(0, 100)} . . .</p>
+        <p>{input.substring(0, 60)} . . .</p>
         <i>click to see the question</i>
       </div>
     ) : (
@@ -76,67 +79,75 @@ const Main = () => {
 
   return (
     <div className="main-page">
-      <div className="header">
-        <p className="title">
-          Questions <small>and</small> Answers
-        </p>
-        <div className="description">
-          <small>
-            On this platform you can ask <b>anything</b> and get responses
-            without being <b>ashamed </b>
-            of the question because anything it's <b>anonymized!</b> Enjoy!
-          </small>
+      {/* {loading ? (
+        <LoopCircleLoading />
+      ) : ( */}
+      <>
+        <div className="header">
+          <p className="title">
+            Questions <small>and</small> Answers
+          </p>
+          <div className="description">
+            <small>
+              On this platform you can ask <b>anything</b> and get responses
+              without being <b>ashamed </b>
+              of the question because anything it's <b>anonymized!</b> Enjoy!
+            </small>
+          </div>
+          <div className="add-question">
+            <p>Create a Question:</p>
+            <form onSubmit={handleSubmit}>
+              <div className="form">
+                <textarea
+                  onClick={() => setDetect(true)}
+                  ref={textAreaRef}
+                  placeholder="Ask Something!"
+                  name="question"
+                  cols="70"
+                  rows={detect ? 4 : 2}
+                  type="text"
+                  value={question.question}
+                  onChange={handleChange}
+                  className="form-control"
+                />
+              </div>
+              <div className="submit-question">
+                <input type="submit" value="Add" />
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="add-question">
-          <p>Create a Question:</p>
-          <form onSubmit={handleSubmit}>
-            <div className="form">
-              <textarea
-                onClick={(e) => setDetect(true)}
-                ref={textAreaRef}
-                placeholder="Ask Something!"
-                name="question"
-                cols="70"
-                style={
-                  detect ? { transition: "300ms" } : { transition: "300ms" }
+        <div className="content">
+          {questions.map((question) => {
+            return (
+              <Link
+                key={question._id}
+                to={
+                  question.answer === ""
+                    ? `/${question._id}/edit`
+                    : `/${question._id}`
                 }
-                rows={detect ? 4 : 2}
-                type="text"
-                value={question.question}
-                onChange={handleChange}
-                className="form-control"
-              />
-            </div>
-            <div className="submit-question">
-              <input type="submit" value="Add" />
-            </div>
-          </form>
+              >
+                <div className="question-container">
+                  <div className="question">
+                    <p>Q: </p>
+                    {truncate(question.question)}
+                  </div>
+                  <div className="answer">
+                    <p>A: </p>
+                    {question.answer === "" ? (
+                      <b className="add-answer">Open to add an answer</b>
+                    ) : (
+                      truncate(question.answer)
+                    )}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-      </div>
-      <div className="content">
-        {questions.map((question) => {
-          return (
-            <div key={question._id} className="question-container">
-              <div className="question">
-                <p>Q: </p>
-                <div>{truncate(question.question)}</div>
-              </div>
-              <div className="answer">
-                <p>A: </p>
-                <p>
-                  {question.answer === "" ? (
-                    <Link to={`/questions/${question._id}/edit`}>
-                      <b className="add-answer">Add an answer</b>
-                    </Link>
-                  ) : (
-                    truncate(question.answer)
-                  )}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      </>
+      {/* )} */}
     </div>
   );
 };

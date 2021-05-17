@@ -4,7 +4,8 @@
   align-items: center;
   text-align: center;
   .title {
-    top: 0;
+    display: flex;
+    justify-content: space-around;
     background-color: #31708E;
     width: 100%;
     font-weight: 600;

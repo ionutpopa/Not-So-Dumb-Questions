@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-import "./header.scss"
+import "./header.scss";
 
-const Header = () => {
+const Header = ({ searchInput }) => {
   const initialState = { question: "", answer: "" };
   const [question, setQuestion] = useState(initialState);
   const [detect, setDetect] = useState(false);
@@ -39,7 +39,6 @@ const Header = () => {
     setDetect(false);
   };
 
-
   useEffect(() => {
     if (detect) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -54,9 +53,12 @@ const Header = () => {
 
   return (
     <div className="header">
-      <p className="title">
-        Questions <small>and</small> Answers
-      </p>
+      <div className="title">
+        <p>
+          Questions <small>and</small> Answers
+        </p>
+        {searchInput}
+      </div>
       <div className="description">
         <small>
           On this platform you can ask <b>anything</b> and get responses without

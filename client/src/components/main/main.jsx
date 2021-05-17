@@ -4,27 +4,16 @@ import axios from "axios";
 
 //import { LoopCircleLoading } from 'react-loadingg';
 
-import "./main.scss";
 import Header from "../header/header";
 import QuestionCard from "../question-card/question-card";
 import useWindowDimensions from "../screen-dimension/screen-dimension";
+import SearchInput from "../search-input/search-input";
+
+import "./main.scss";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
   //const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const getQuestions = async () => {
-      try {
-        const response = await axios.get("/api/questions");
-        setQuestions(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getQuestions();
-  }, []);
 
   const { width } = useWindowDimensions();
 
@@ -41,13 +30,28 @@ const Main = () => {
       input
     );
 
+  useEffect(() => {
+    const getQuestions = async () => {
+      try {
+        const response = await axios.get("/api/questions");
+        setQuestions(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getQuestions();
+
+    return () => questions;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions]);
+
   return (
     <div className="main-page">
       {/* {loading ? (
         <LoopCircleLoading />
       ) : ( */}
       <>
-        <Header />
+        <Header searchInput={<SearchInput questions={questions} />} />
         <div className="content">
           {questions.map((question) => {
             return (

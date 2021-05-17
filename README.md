@@ -8,7 +8,6 @@ Start server: nodemon server.js
 Start client: yarn start
 
 To-Do: <br />
-<br />
 Backend:
 <br />
 :zap: Add login, register, auth

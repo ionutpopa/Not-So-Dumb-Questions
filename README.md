@@ -7,12 +7,12 @@ Start server: nodemon server.js
 
 Start client: yarn start
 
-To-Do: <br />
-Backend:
+<br />
+To-Do Backend:
 <br />
 :zap: Add login, register, auth
 <br />
-Frontend: 
+To-Do Frontend: 
 <br />
 :zap: Add color scheme ✔️
 <br />

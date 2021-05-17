@@ -10,6 +10,10 @@ Start client: yarn start
 To-Do: <br />
 :bug: When adding a new question fix the bug where the user needs to click twice to send the question
 <br />
+Backend:
+<br />
 :zap: Add login, register, auth
+<br />
+Frontend: 
 <br />
 :zap: Add color scheme ✔️

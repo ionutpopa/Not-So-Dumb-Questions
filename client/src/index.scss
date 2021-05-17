@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
   margin: 0;
@@ -9,14 +9,14 @@
 body {
   overflow-x: hidden;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f7f9fb;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -27,15 +27,13 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  border-radius: 10px;
   transition: 200ms;
   background: #dfe1e2;
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
   transition: 200ms;
-  background: #31708E90;
+  background: #31708e90;
 }
 
 body::-webkit-scrollbar-thumb:hover {

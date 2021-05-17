@@ -4,6 +4,7 @@
   align-items: center;
   text-align: center;
   .title {
+    top: 0;
     background-color: #31708E;
     width: 100%;
     font-weight: 600;
@@ -11,8 +12,6 @@
     padding: 20px 0;
     letter-spacing: 0.2rem;
     color: #ffffff;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px 0 #58585860;
     small {
@@ -40,6 +39,7 @@
   }
 }
 .add-question {
+  margin: 0 20px;
   margin-top: -2px;
   display: flex;
   justify-content: center;

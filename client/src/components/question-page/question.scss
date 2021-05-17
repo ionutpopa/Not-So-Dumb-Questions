@@ -5,7 +5,7 @@
   justify-content: space-between;
   height: 95%;
   margin: 0 20px;
-  .question-container {
+  .q-container {
     margin-top: 30px;
     background-color: #5085a5;
     color: #ffffff;
@@ -49,23 +49,6 @@
     font-size: 15px;
     font-weight: 500;
     letter-spacing: 1px;
-  }
-  .cancel {
-    background-color: #fa7777;
-    transition: 200ms;
-    margin-bottom: 10px;
-    color: #ffffff;
-    box-shadow: 0 2px 4px 0 #58585860;
-  }
-  .cancel:focus {
-    background-color: #ff4e4e;
-    transition: 200ms;
-    border: 2px solid #474747;
-  }
-  .cancel:hover {
-    background-color: #ff4e4e;
-    transition: 200ms;
-    border: 2px solid #474747;
   }
   .loading-container {
     border: 2px solid #7e7e7e;

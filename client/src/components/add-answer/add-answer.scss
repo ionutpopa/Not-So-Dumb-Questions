@@ -79,38 +79,6 @@
       font-weight: 500;
       letter-spacing: 1px;
     }
-    .answer {
-      background-color: #98e956;
-      transition: 200ms;
-      color: #ffffff;
-      box-shadow: 0 2px 4px 0 #58585860;
-    }
-    .answer:focus {
-      color: #ffffff;
-      background-color: #73ff00;
-      transition: 200ms;
-    }
-    .answer:hover {
-      color: #ffffff;
-      background-color: #73ff00;
-      transition: 200ms;
-    }
-    .cancel {
-      background-color: #fa7777;
-      transition: 200ms;
-      color: #ffffff;
-      box-shadow: 0 2px 4px 0 #58585860;
-    }
-    .cancel:focus {
-      color: #ffffff;
-      background-color: #ff4e4e;
-      transition: 200ms;
-    }
-    .cancel:hover {
-      color: #ffffff;
-      background-color: #ff4e4e;
-      transition: 200ms;
-    }
   }
   .loading-container {
     border: 2px solid #7e7e7e;

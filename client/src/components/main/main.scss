@@ -1,65 +1,18 @@
 .main-page {
   display: flex;
   flex-direction: column;
-  margin: 0 80px;
   .content {
+    margin: 0 40px;
     margin-top: 10px;
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    .question-container {
-      cursor: pointer;
-      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
-      transition: 300ms;
-      border-left: 3px solid #585858;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px 0;
-      padding-left: 20px;
-      margin-top: 2px;
-      margin-bottom: 10px;
-      background-color: #ffffff;
-      .question {
-        display: flex;
-        margin-bottom: 10px;
-        width: 100%;
-        p:nth-child(1) {
-          margin-right: 10px;
-        }
-      }
-      width: 100%;
-      .answer {
-        display: flex;
-        p:nth-child(1) {
-          margin-right: 10px;
-        }
-        .add-answer {
-          color: #8fc1e3;
-        }
-      }
-      .truncate-text-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        i {
-          margin-right: 40px;
-          color: #5f5f5f;
-        }
-      }
-    }
-    .question-container:hover {
-      transition: 300ms;
-      background-color: #e2e2e2;
-    }
+    flex-direction: column-reverse;
   }
 }
 
 @media only screen and (max-width: 718px) {
-  .main-page {
-    margin: 0 20px;
+  .content {
+    margin: 0 20px !important;
   }
   .add-question {
     p {

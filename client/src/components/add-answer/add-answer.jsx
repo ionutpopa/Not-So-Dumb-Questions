@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { get, patch } from "axios";
 import { DisappearedLoading } from "react-loadingg";
 
+import Answer from "../buttons/answer";
+import Cancel from "../buttons/cancel";
+
 import "./add-answer.scss";
 
 const AddAnswer = (props) => {
@@ -88,12 +91,11 @@ const AddAnswer = (props) => {
           onChange={handleChange}
         />
         <div className="buttons space">
-          <button className="answer" type="submit">
+          {/* <button className="answer" type="submit">
             Answer
-          </button>
-          <button className="cancel" type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          </button> */}
+          <Answer>Answer</Answer>
+          <Cancel onClick={handleCancel}>Cancel</Cancel>
         </div>
       </form>
     </div>

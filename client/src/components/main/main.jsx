@@ -6,12 +6,11 @@ import axios from "axios";
 
 import "./main.scss";
 import Header from "../header/header";
-
+import QuestionCard from "../question-card/question-card";
 import useWindowDimensions from "../screen-dimension/screen-dimension";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
-  const { width } = useWindowDimensions();
   //const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,8 +26,10 @@ const Main = () => {
     getQuestions();
   }, []);
 
+  const { width } = useWindowDimensions();
+
   const truncate = (input) =>
-    input.length > 100 ? (
+    input.length > 60 ? (
       <div className="truncate-text-container">
         <p>
           {width < 540 ? input.substring(0, 40) : input.substring(0, 140)}
@@ -58,20 +59,11 @@ const Main = () => {
                     : `/${question._id}`
                 }
               >
-                <div className="question-container">
-                  <div className="question">
-                    <p>Q: </p>
-                    {truncate(question.question)}
-                  </div>
-                  <div className="answer">
-                    <p>A: </p>
-                    {question.answer === "" ? (
-                      <b className="add-answer">Open to add an answer</b>
-                    ) : (
-                      truncate(question.answer)
-                    )}
-                  </div>
-                </div>
+                <QuestionCard
+                  question={truncate(question.question)}
+                  answer={truncate(question.answer)}
+                  questionAnswer={question.answer}
+                />
               </Link>
             );
           })}

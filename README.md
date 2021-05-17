@@ -16,3 +16,5 @@ To-Do Frontend:
 :zap: Add color scheme ✔️
 <br />
 :bug: When adding a new question fix the bug where the user needs to click twice to send the question
+<br />
+:zap: Split code in components 👷

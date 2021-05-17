@@ -9,7 +9,7 @@ Start client: yarn start
 <br />
 To-Do Backend:
 <br />
-:zap: Add login, register, auth
+:zap: Add login, register, auth 🚧
 <br />
 To-Do Frontend: 
 <br />
@@ -17,4 +17,4 @@ To-Do Frontend:
 <br />
 :bug: When adding a new question fix the bug where the user needs to click twice to send the question
 <br />
-:zap: Split code in components 👷
+:zap: Split code in components ✔️

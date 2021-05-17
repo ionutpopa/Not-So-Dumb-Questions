@@ -8,7 +8,6 @@ Start server: nodemon server.js
 Start client: yarn start
 
 To-Do: <br />
-:bug: When adding a new question fix the bug where the user needs to click twice to send the question
 <br />
 Backend:
 <br />
@@ -17,3 +16,5 @@ Backend:
 Frontend: 
 <br />
 :zap: Add color scheme ✔️
+<br />
+:bug: When adding a new question fix the bug where the user needs to click twice to send the question

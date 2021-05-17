@@ -5,14 +5,14 @@ import axios from "axios";
 //import { LoopCircleLoading } from 'react-loadingg';
 
 import "./main.scss";
+import Header from "../header/header";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
-  const [detect, setDetect] = useState(false);
   //const [loading, setLoading] = useState(false);
-  const textAreaRef = useRef();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getQuestions = async () => {
       try {
         const response = await axios.get("/api/questions");
@@ -22,41 +22,7 @@ const Main = () => {
       }
     };
     getQuestions();
-
-    if (detect) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [detect]);
-
-  const initialState = { question: "", answer: "" };
-  const [question, setQuestion] = useState(initialState);
-
-  const handleChange = (e) => {
-    setQuestion({ ...question, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!question.question) return;
-
-    const postQuestion = async () => {
-      try {
-        await axios.post("/api/questions", question);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    postQuestion();
-    window.location.reload(false);
-  };
+  }, []);
 
   const truncate = (input) =>
     input.length > 100 ? (
@@ -68,55 +34,13 @@ const Main = () => {
       input
     );
 
-  const handleClickOutside = (e) => {
-    if (textAreaRef.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    setDetect(false);
-  };
-
   return (
     <div className="main-page">
       {/* {loading ? (
         <LoopCircleLoading />
       ) : ( */}
       <>
-        <div className="header">
-          <p className="title">
-            Questions <small>and</small> Answers
-          </p>
-          <div className="description">
-            <small>
-              On this platform you can ask <b>anything</b> and get responses
-              without being <b>ashamed </b>
-              of the question because anything it's <b>anonymized!</b> Enjoy!
-            </small>
-          </div>
-          <div className="add-question">
-            <p>Create a Question:</p>
-            <form onSubmit={handleSubmit}>
-              <div className="form">
-                <textarea
-                  onClick={() => setDetect(true)}
-                  ref={textAreaRef}
-                  placeholder="Ask Something!"
-                  name="question"
-                  cols="70"
-                  rows={detect ? 4 : 2}
-                  type="text"
-                  value={question.question}
-                  onChange={handleChange}
-                  className="form-control"
-                />
-              </div>
-              <div className="submit-question">
-                <input type="submit" value="Add" />
-              </div>
-            </form>
-          </div>
-        </div>
+        <Header />
         <div className="content">
           {questions.map((question) => {
             return (

@@ -5,19 +5,28 @@
   justify-content: space-between;
   height: 95%;
   margin: 0 20px;
-  .title-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    align-items: center;;
-    background-color: #222831;
+  .question-container {
+    margin-top: 30px;
+    background-color: #5085a5;
     color: #ffffff;
-    padding: 10px;
-    padding-left: 14px;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 2px 4px 0 #58585860;
     p {
       font-size: 18px;
-      letter-spacing: 0.3em;
+      letter-spacing: 1px;
       font-weight: 500;
+    }
+  }
+  .answer-container {
+    background-color: #31708e;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 2px 4px 0 #58585860;
+    padding: 20px;
+    p {
+      color: #f2f2f2;
     }
   }
   .space {
@@ -34,8 +43,7 @@
     cursor: pointer;
     margin-top: 20px;
     border: none;
-    background-color: #ffffff;
-    border: 2px solid #505050;
+    border: 2px solid #474747b6;
     border-radius: 8px;
     padding: 5px 15px;
     font-size: 15px;
@@ -43,18 +51,21 @@
     letter-spacing: 1px;
   }
   .cancel {
-    background-color: #ff00006c;
+    background-color: #fa7777;
     transition: 200ms;
+    margin-bottom: 10px;
+    color: #ffffff;
+    box-shadow: 0 2px 4px 0 #58585860;
   }
   .cancel:focus {
-    color: #ffffff;
-    background-color: #ff0000;
+    background-color: #ff4e4e;
     transition: 200ms;
+    border: 2px solid #474747;
   }
   .cancel:hover {
-    color: #ffffff;
-    background-color: #ff0000;
+    background-color: #ff4e4e;
     transition: 200ms;
+    border: 2px solid #474747;
   }
   .loading-container {
     border: 2px solid #7e7e7e;
@@ -63,5 +74,11 @@
     p {
       font-weight: 600;
     }
+  }
+}
+
+@media only screen and (max-height: 660px) {
+  .question-page-container {
+    height: 95%;
   }
 }

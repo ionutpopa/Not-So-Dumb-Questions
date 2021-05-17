@@ -7,8 +7,11 @@ import axios from "axios";
 import "./main.scss";
 import Header from "../header/header";
 
+import useWindowDimensions from "../screen-dimension/screen-dimension";
+
 const Main = () => {
   const [questions, setQuestions] = useState([]);
+  const { width } = useWindowDimensions();
   //const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,8 +30,11 @@ const Main = () => {
   const truncate = (input) =>
     input.length > 100 ? (
       <div className="truncate-text-container">
-        <p>{input.substring(0, 100)} . . .</p>
-        <i>click to see the question</i>
+        <p>
+          {width < 540 ? input.substring(0, 40) : input.substring(0, 140)}
+          <b>...</b>
+        </p>
+        <i>click to open...</i>
       </div>
     ) : (
       input

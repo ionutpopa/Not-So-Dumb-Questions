@@ -25,6 +25,7 @@
       .question {
         display: flex;
         margin-bottom: 10px;
+        width: 100%;
         p:nth-child(1) {
           margin-right: 10px;
         }
@@ -41,9 +42,10 @@
       }
       .truncate-text-container {
         display: flex;
-        padding-right: 10px;
+        justify-content: space-between;
+        width: 100%;
         i {
-          margin-left: 40px;
+          margin-right: 40px;
           color: #5f5f5f;
         }
       }

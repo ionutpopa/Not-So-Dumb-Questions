@@ -1,5 +1,5 @@
 # :speech_balloon: Not So Dumb Questions [MERN WEB APP]
-A platform where you can ask anything and get responses without being ashamed of the question because anything it's anonymized!
+A platform where you can ask anything and get responses without being ashamed of the question because no one will know who you are!
 
 Add your own MONGODB_URI in server.js to work!
 
@@ -18,3 +18,5 @@ To-Do Frontend:
 :bug: When adding a new question fix the bug where the user needs to click twice to send the question
 <br />
 :zap: Split code in components ✔️
+<br />
+:zap: More componentization ✔️

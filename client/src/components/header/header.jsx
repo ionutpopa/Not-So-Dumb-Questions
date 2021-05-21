@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
+import useWindowDimensions from "../screen-dimension/screen-dimension";
+
 import "./header.scss";
 
 const Header = ({ searchInput }) => {
+  const { width } = useWindowDimensions();
   const initialState = { question: "", answer: "" };
   const [question, setQuestion] = useState(initialState);
   const [detect, setDetect] = useState(false);
@@ -57,7 +60,7 @@ const Header = ({ searchInput }) => {
         <p>
           Questions <small>and</small> Answers
         </p>
-        {searchInput}
+        {width < 540 ? null : searchInput}
       </div>
       <div className="description">
         <small>

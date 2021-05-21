@@ -56,9 +56,4 @@ router.delete("/questions/:id", (req, res) => {
   });
 });
 
-router.post("/googlelogin", (req, res) => {
-  const { tokenId } = req.body;
-  console.log(tokenId);
-});
-
 module.exports = router;

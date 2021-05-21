@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #31708E;
+    width: 100%;
+    font-weight: 600;
+    font-size: 23px;
+    padding: 20px 0;
+    letter-spacing: 0.2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px 0 #58585860;
+    small {
+      margin-left: -3px;
+      letter-spacing: 0.1rem;
+      font-weight: 300;
+    }
+  }
+  .description {
+    padding: 10px 20px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #58585860;
+    border-radius: 12px;
+    letter-spacing: 0.02rem;
+    margin-bottom: 20px;
+    cursor: default;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 #58585860;
+    b {
+      color: #31708E;
+    }
+  }
+}
+.add-question {
+  margin: 0 20px;
+  margin-top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin-right: 10px;
+    font-size: 17px;
+  }
+  form {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    textarea {
+      border-radius: 8px;
+      width: 100%;
+      outline: none;
+      resize: none;
+      overflow: auto;
+      padding: 11px;
+      border: 1px solid #58585860;
+      transition: 200ms;
+      box-shadow: 0 2px 4px 0 #58585860;
+    }
+    textarea:focus {
+      border: 2px solid #585858;
+      transition: 200ms;
+    }
+    textarea[type="text"] {
+      font-family: "Roboto";
+      font-size: 14px;
+    }
+  }
+  .submit-question {
+    margin-left: 10px;
+    input {
+      box-shadow: 0 2px 4px 0 #58585860;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #ffffff;
+      background-color: #5085a5;
+      transition: 200ms;
+    }
+    input:hover {
+      transition: 200ms;
+      background-color: #386683;
+    }
+  }
+}

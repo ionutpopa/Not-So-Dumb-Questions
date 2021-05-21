@@ -1,16 +1,34 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 //import { LoopCircleLoading } from 'react-loadingg';
 
+import Header from "../header/header";
+import QuestionCard from "../question-card/question-card";
+import useWindowDimensions from "../screen-dimension/screen-dimension";
+import SearchInput from "../search-input/search-input";
+
 import "./main.scss";
 
 const Main = () => {
   const [questions, setQuestions] = useState([]);
-  const [detect, setDetect] = useState(false);
   //const [loading, setLoading] = useState(false);
-  const textAreaRef = useRef();
+
+  const { width } = useWindowDimensions();
+
+  const truncate = (input) =>
+    input.length > 60 ? (
+      <div className="truncate-text-container">
+        <p>
+          {width < 540 ? input.substring(0, 40) : input.substring(0, 140)}
+          <b>...</b>
+        </p>
+        <i>click to open...</i>
+      </div>
+    ) : (
+      input
+    );
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -23,59 +41,9 @@ const Main = () => {
     };
     getQuestions();
 
-    if (detect) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [detect]);
-
-  const initialState = { question: "", answer: "" };
-  const [question, setQuestion] = useState(initialState);
-
-  const handleChange = (e) => {
-    setQuestion({ ...question, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!question.question) return;
-
-    const postQuestion = async () => {
-      try {
-        await axios.post("/api/questions", question);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    postQuestion();
-    window.location.reload(false);
-  };
-
-  const truncate = (input) =>
-    input.length > 100 ? (
-      <div className="truncate-text-container">
-        <p>{input.substring(0, 100)} . . .</p>
-        <i>click to see the question</i>
-      </div>
-    ) : (
-      input
-    );
-
-  const handleClickOutside = (e) => {
-    if (textAreaRef.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    setDetect(false);
-  };
+    return () => questions;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions]);
 
   return (
     <div className="main-page">
@@ -83,40 +51,7 @@ const Main = () => {
         <LoopCircleLoading />
       ) : ( */}
       <>
-        <div className="header">
-          <p className="title">
-            Questions <small>and</small> Answers
-          </p>
-          <div className="description">
-            <small>
-              On this platform you can ask <b>anything</b> and get responses
-              without being <b>ashamed </b>
-              of the question because anything it's <b>anonymized!</b> Enjoy!
-            </small>
-          </div>
-          <div className="add-question">
-            <p>Create a Question:</p>
-            <form onSubmit={handleSubmit}>
-              <div className="form">
-                <textarea
-                  onClick={() => setDetect(true)}
-                  ref={textAreaRef}
-                  placeholder="Ask Something!"
-                  name="question"
-                  cols="70"
-                  rows={detect ? 4 : 2}
-                  type="text"
-                  value={question.question}
-                  onChange={handleChange}
-                  className="form-control"
-                />
-              </div>
-              <div className="submit-question">
-                <input type="submit" value="Add" />
-              </div>
-            </form>
-          </div>
-        </div>
+        <Header searchInput={<SearchInput questions={questions} />} />
         <div className="content">
           {questions.map((question) => {
             return (
@@ -128,20 +63,11 @@ const Main = () => {
                     : `/${question._id}`
                 }
               >
-                <div className="question-container">
-                  <div className="question">
-                    <p>Q: </p>
-                    {truncate(question.question)}
-                  </div>
-                  <div className="answer">
-                    <p>A: </p>
-                    {question.answer === "" ? (
-                      <b className="add-answer">Open to add an answer</b>
-                    ) : (
-                      truncate(question.answer)
-                    )}
-                  </div>
-                </div>
+                <QuestionCard
+                  question={truncate(question.question)}
+                  answer={truncate(question.answer)}
+                  questionAnswer={question.answer}
+                />
               </Link>
             );
           })}

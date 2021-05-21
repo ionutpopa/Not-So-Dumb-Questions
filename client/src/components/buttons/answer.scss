@@ -1,0 +1,16 @@
+.answer {
+  background-color: #98e956;
+  transition: 200ms;
+  color: #ffffff;
+  box-shadow: 0 2px 4px 0 #58585860;
+}
+.answer:focus {
+  color: #ffffff;
+  background-color: #73ff00;
+  transition: 200ms;
+}
+.answer:hover {
+  color: #ffffff;
+  background-color: #73ff00;
+  transition: 200ms;
+}

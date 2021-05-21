@@ -1,14 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { get, patch } from "axios";
 import { DisappearedLoading } from "react-loadingg";
+
+import Answer from "../buttons/answer";
+import Cancel from "../buttons/cancel";
 
 import "./add-answer.scss";
 
 const AddAnswer = (props) => {
   const initialState = { question: "", answer: "" };
   const [question, setQuestion] = useState(initialState);
+  const [isSelected, setIsSelected] = useState("60");
+  const textAreaRef = useRef();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getQuestion = async () => {
       try {
         const response = await get(`/api/questions/${props.match.params._id}`);
@@ -18,7 +24,26 @@ const AddAnswer = (props) => {
       }
     };
     getQuestion();
-  }, [props]);
+
+    if (isSelected) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [props, isSelected]);
+
+  const handleClickOutside = (e) => {
+    if (textAreaRef.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click
+    setIsSelected("60");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,21 +80,22 @@ const AddAnswer = (props) => {
       </div>
       <form onSubmit={handleSubmit}>
         <textarea
+          ref={textAreaRef}
           placeholder="help with an answer!"
           name="answer"
           rows="10"
-          cols="60"
+          onFocus={() => setIsSelected("80")}
+          cols={isSelected}
           type="text"
           value={question.answer}
           onChange={handleChange}
         />
         <div className="buttons space">
-          <button className="answer" type="submit">
+          {/* <button className="answer" type="submit">
             Answer
-          </button>
-          <button className="cancel" type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          </button> */}
+          <Answer>Answer</Answer>
+          <Cancel onClick={handleCancel}>Cancel</Cancel>
         </div>
       </form>
     </div>

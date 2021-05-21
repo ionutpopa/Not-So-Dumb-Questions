@@ -1,0 +1,14 @@
+.cancel {
+  background-color: #fa7777;
+  transition: 200ms;
+  color: #ffffff;
+  box-shadow: 0 2px 4px 0 #58585860;
+}
+.cancel:focus {
+  background-color: #ff4e4e;
+  transition: 200ms;
+}
+.cancel:hover {
+  background-color: #ff4e4e;
+  transition: 200ms;
+}

@@ -3,20 +3,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 90vh;
+  height: 95%;
   margin: 0 20px;
   .title-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    align-items: center;
-    background-color: #222831;
+    margin-top: 30px;
+    background-color: #5085a5;
+    border-radius: 10px;
+    transition: 200ms;
     color: #ffffff;
     padding: 15px 20px;
+    box-shadow: 0 2px 4px 0 #58585860;
     p:nth-child(1) {
       font-size: 20px;
       margin-bottom: 10px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.1em;
       font-weight: 600;
     }
     p:nth-child(2) {
@@ -38,11 +38,12 @@
       resize: none;
       overflow: auto;
       padding: 11px;
-      border: 2px solid #7e7e7e;
+      border: 1px solid #7e7e7e50;
+      box-shadow: 0 2px 4px 0 #58585860;
       transition: 200ms;
     }
     textarea:focus {
-      border: 2px solid #272727;
+      border: 2px solid #7e7e7e;
       transition: 200ms;
     }
     textarea[type="text"] {
@@ -71,41 +72,12 @@
       cursor: pointer;
       margin-top: 20px;
       border: none;
-      background-color: #ffffff;
-      border: 2px solid #505050;
+      border: 1px solid #474747b6;
       border-radius: 8px;
       padding: 5px 15px;
       font-size: 15px;
       font-weight: 500;
       letter-spacing: 1px;
-    }
-    .answer {
-      background-color: #73ff006c;
-      transition: 200ms;
-    }
-    .answer:focus {
-      color: #ffffff;
-      background-color: #73ff00;
-      transition: 200ms;
-    }
-    .answer:hover {
-      color: #ffffff;
-      background-color: #73ff00;
-      transition: 200ms;
-    }
-    .cancel {
-      background-color: #ff00006c;
-      transition: 200ms;
-    }
-    .cancel:focus {
-      color: #ffffff;
-      background-color: #ff0000;
-      transition: 200ms;
-    }
-    .cancel:hover {
-      color: #ffffff;
-      background-color: #ff0000;
-      transition: 200ms;
     }
   }
   .loading-container {
